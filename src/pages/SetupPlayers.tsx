@@ -123,9 +123,9 @@ export default function SetupPlayers() {
       footer={
         <>
           {/* Linha de ações secundárias */}
-          <div className="flex gap-3">
+          <div className="flex gap-3 mt-3 -mb-3">
             <button
-              className={`btn flex-1 py-3 rounded-xl font-semibold text-white
+              className={`btn py-3 flex-1 rounded-xl font-semibold text-white
                 ${
                   editMode
                     ? "bg-red-600"
@@ -153,7 +153,7 @@ export default function SetupPlayers() {
 
           {/* CTA principal */}
           <button
-            className={`btnPrimary mt-4 ${
+            className={`btnPrimary  ${
               players.length < 3
                 ? "opacity-50 cursor-not-allowed"
                 : ""

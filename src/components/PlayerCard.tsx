@@ -32,13 +32,13 @@ export function PlayerCard({
             {/* Avatar */}
             <img
                 src={avatar}
-                className="w-14 h-14 rounded-full border-4"
+                className="w-12 h-12 rounded-full border-4"
                 style={{ borderColor: color }}
             />
 
             {/* Nome */}
             <input
-                className="flex-1 bg-transparent border-b border-white/40
+                className="flex-1 w-10 bg-transparent border-b border-white/40
                    outline-none text-white placeholder-white/70"
                 placeholder={`Jogador ${index + 1}`}
                 value={name}

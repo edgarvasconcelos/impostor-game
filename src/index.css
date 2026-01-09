@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+* {
+  @apply select-none;
+}
+
 .screen {
   @apply h-screen w-full flex flex-col items-center justify-center px-6 text-center text-slate-100;
 }

@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { useGame } from "../context/GameContext";
+import { Screen } from "../components/Screen";
 
 function formatTime(seconds: number) {
   const m = Math.floor(seconds / 60);
@@ -32,6 +33,15 @@ export default function StartTimer() {
 
   const danger = game.remainingTime <= 10;
 
+  function finishTimer() {
+    playBeep();
+    setGame(g => ({
+      ...g,
+      remainingTime: 0,
+      phase: "voting"
+    }));
+  }
+
   useEffect(() => {
     if (game.remainingTime <= 0) return;
 
@@ -57,16 +67,35 @@ export default function StartTimer() {
   }, [game.remainingTime, setGame]);
 
   return (
-    <div
-      className="h-screen w-screen flex items-center justify-center
-                 text-white font-bold transition-colors duration-500"
-      style={{
-        backgroundColor: danger ? "#dc2626" : "#020617"
-      }}
+    <Screen
+      footer={
+      <>
+        <div className="flex">
+          {/* BOTÃO PULAR */}
+          <button
+            className="btnPrimary px-10 py-4 rounded-xl bg-white/10
+                      text-white font-semibold
+                      active:scale-95 transition"
+            onClick={finishTimer}
+          >
+            Pular para votação
+          </button>
+        </div>
+
+      </>
+      }
     >
-      <span className="text-8xl tracking-widest">
-        {formatTime(game.remainingTime)}
-      </span>
-    </div>
+      <div
+        className="h-full w-full rounded-xl flex items-center justify-center
+                  text-white font-bold transition-colors duration-500"
+        style={{
+          backgroundColor: danger ? "#dc2626" : "transparent"
+        }}
+      >
+        <span className="text-8xl tracking-widest">
+          {formatTime(game.remainingTime)}
+        </span>
+      </div>
+    </Screen>
   );
 }

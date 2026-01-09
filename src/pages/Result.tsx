@@ -43,6 +43,14 @@ export default function Result() {
       footer={
         <>
           <button
+            className="btnGhost w-full -mb-2"
+            onClick={() =>
+              setGame(g => ({ ...g, phase: "home" }))
+            }
+          >
+            Voltar ao início
+          </button>
+          <button
             className="btnPrimary w-full"
             onClick={() =>
               setGame(g => resetRound(g))
@@ -50,33 +58,41 @@ export default function Result() {
           >
             Nova rodada
           </button>
-
-          <button
-            className="btnGhost w-full mt-3"
-            onClick={() =>
-              setGame(g => ({ ...g, phase: "home" }))
-            }
-          >
-            Voltar ao início
-          </button>
         </>
       }
     >
       <div className="space-y-8">
 
-        {/* EMOÇÃO */}
-        <div className="text-center">
-          <div className="text-6xl mb-3">
-            {emoji}
+        <div
+          className="w-full max-w-sm mx-auto
+             rounded-3xl p-6
+             bg-white/10 backdrop-blur-sm
+             text-center"
+        >
+          {/* Emoji + título */}
+          <div className="flex items-center justify-center gap-3 mb-3">
+            <span className="text-4xl">
+              {emoji}
+            </span>
+            <h1 className="text-2xl font-extrabold tracking-wide">
+              {title}
+            </h1>
           </div>
 
-          <h1 className="text-3xl font-bold mb-2">
-            {title}
-          </h1>
-
-          <p className="text-slate-300 mb-8 font-bold">
+          {/* Subtítulo */}
+          <p className="text-slate-300 font-medium mb-5">
             {subtitle}
           </p>
+
+          {/* Palavra revelada */}
+          <div className="rounded-xl bg-black/30 py-3">
+            <span className="block text-xs uppercase tracking-widest text-slate-400 mb-1">
+              A palavra era
+            </span>
+            <span className="text-xl font-bold tracking-wider text-white">
+              {game.secretWord}
+            </span>
+          </div>
         </div>
 
 

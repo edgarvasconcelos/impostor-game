@@ -46,7 +46,7 @@ export function Screen({
 
         {/* FOOTER FIXO */}
         {footer && (
-          <div className="pt-4 pb-6 px-4 border-t border-white/10">
+          <div className="pb-6 px-4 border-t border-white/10">
             {footer}
           </div>
         )}
